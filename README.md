@@ -1,1 +1,6 @@
 # DwmThumbnailTest
+
+DwmRegisterThumbnail
+DwmUnregisterThumbnail
+DwmQueryThumbnailSourceSize
+DwmUpdateThumbnailProperties
