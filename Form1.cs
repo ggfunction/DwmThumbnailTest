@@ -24,6 +24,7 @@ namespace DwmThumbnailTest
 
             this.capturedSources = new Dictionary<IntPtr, ListViewItem>();
             this.virtualListViewItems = new List<ListViewItem>();
+            this.CaptureTarget = DefaultCaptureTarget;
 
             this.ListView1.CacheVirtualItems += (s, e) =>
             {
@@ -36,7 +37,7 @@ namespace DwmThumbnailTest
                 {
                     this.ListView1.SuspendLayout();
                     this.ClearListViewItems();
-                    this.CaptureThumbnailSources(DefaultCaptureTarget);
+                    this.CaptureThumbnailSources(this.CaptureTarget);
                     this.ListView1.ResumeLayout();
                 }
             };
@@ -48,6 +49,8 @@ namespace DwmThumbnailTest
         }
 
         public Size ThumbnailSize { get; private set; }
+
+        protected Func<Window, bool> CaptureTarget { get; private set; }
 
         protected ListView ListView1 { get; private set; }
 
